@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>replit</title>
+	<style>
+		html {
+			font-size: 16px;
+		}
+
+		/*обратимся ко всем элементам, чтобы убрать отступы, которые назначит браузер по умолчанию*/
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		/*для основного контейнера будем использовать фиксировано-резиновую верстку*/
+		.container {
+			/*устанавливаем основную ширину равной ширине видимой части окна браузера*/
+			width: 100vw;
+			/*устанавливаем минимальную ширину, до которой можно сжимать контейнер, если ширина устройства будет меньше - появится горизонтальный скролл*/
+			min-width: 320px;
+			/*устанавливаем максимальную ширину, до которой можно расширять контейнер, если ширина устройства будет больше - по бокам появятся отступы*/
+			max-width: 100%;
+			/*для того, чтобы контейнер находился всегда по центру по горизонтали указываем значения для внешних отступов*/
+			margin: auto;
+			/*в случае, если контента будет мало, чтобы страница полностью заполнила всю высоту окна браузера, устанавливаем минимальную высоту*/
+			min-height: 100vh;
+			/*в случае, если контента будет много, чтобы появился вертикальный скролл, устанавливаем значение высоты равной содержимому*/
+			height: auto;
+			/*для более простого расположения элементов на странице, воспользуемся технологией flexBox*/
+			display: flex;
+			/*направление основной оси меняем на вертикальное*/
+			flex-direction: column;
+		}
+
+		/*каждому элементу контейнера будем устанавливать фоновой цвет, чтобы было нагляднее*/
+		header {
+			background-color: pink;
+			/*зададим размер header по основной оси*/
+			flex-basis: 10vh;
+			font-size: 1.5rem;
+		}
+
+		/*main - основной элемент страницы является одновременно и flex-родителем и flex-контейнером*/
+		main {
+			/*чтобы заполнять все пространство по основной оси основным элементом прописываем свойство flex */
+			flex: 1 1 auto;
+			display: flex;
+		}
+
+		main>aside {
+			background-color: cyan;
+			/*зададим размер левой части по основной оси в процентах*/
+			flex-basis: 6rem;
+		}
+
+		main>section {
+			background-color: coral;
+			/*чтобы заполнять все пространство по основной оси основным элементом прописываем свойство flex */
+			flex: 1 1 auto;
+			font-size: 20px;
+		}
+
+		section div {
+			font-size: 0.8em;
+		}
+
+		section div div {
+			font-size: 1.2em;
+		}
+
+		main>section+aside {
+			background-color: lime;
+			/*зададим размер левой части по основной оси в процентах*/
+			flex-basis: 6rem;
+		}
+
+		footer {
+			background-color: gray;
+			/*зададим размер footer по основной оси*/
+			flex-basis: 5vh;
+		}
+
+		/*запрос для экранов с максимальной шириной 960px и меньше*/
+		/*запрос для экранов с максимальной шириной 960px и меньше*/
+		@media screen and (max-width:960px){
+		    main>section+aside{
+		        display: none;
+		    }
+		    main>aside{
+		        flex-basis: 30%;
+		    }
+		    main>section{
+		        flex-basis: 70%;
+		    }
+		}
+		/*запрос для экранов с максимальной шириной 570px и меньше*/
+		@media screen and (max-width:570px) {
+			main {
+				flex-direction: column;
+			}
+
+			main>aside {
+				flex-basis: 20vh;
+			}
+
+			main>section {
+				flex-basis: auto;
+				order: -1;
+			}
+		}
+	</style>
+	
+</head>
+
+<body>
+
+	<div class="container">
+		<header>header top</header>
+		<main>
+			<aside>aside left</aside>
+			<section>section center
+				<div>
+					sfgdfggdf
+					<div>dfgdfgdfgdf</div>
+				</div>
+			</section>
+			<aside>aside right</aside>
+		</main>
+		<footer>footer bottom</footer>
+	</div>
+
+</body>
+
+</html>

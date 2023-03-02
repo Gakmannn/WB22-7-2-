@@ -1,0 +1,6 @@
+@import url(w570.css) screen and (max-width:570px);
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
